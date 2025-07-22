@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import CounterControls from '@components/CounterControls'
+import CounterDisplay from '@components/CounterDisplay'
 
 export default function Counter() {
-  const [count, setCount] = useState(0)
-
   return (
-    <button onClick={() => setCount((currentCount) => currentCount + 1)}>
-      count is {count}
-    </button>
+    <div>
+      <CounterDisplay />
+      <CounterControls />
+    </div>
   )
 }
