@@ -1,13 +1,25 @@
 import { create } from 'zustand'
 
-interface CounterState {
+export interface CounterState {
   count: number
+  actions: CounterActions
+}
+
+export interface CounterActions {
   increment: () => void
   decrement: () => void
 }
 
-export const useCounterStore = create<CounterState>((set) => ({
+// Do not export the store, only the hooks
+const useCounterStore = create<CounterState>((set) => ({
   count: 0,
-  increment: () => set((state) => ({ count: state.count + 1 })),
-  decrement: () => set((state) => ({ count: state.count - 1 })),
+  actions: {
+    increment: () => set((state) => ({ count: state.count + 1 })),
+    decrement: () => set((state) => ({ count: state.count - 1 })),
+  }
 }))
+
+export const useCount = () => useCounterStore((state) => state.count)
+
+// Should be a referencial, so it's not re-created on every render
+export const useActions = () => useCounterStore((state) => state.actions)

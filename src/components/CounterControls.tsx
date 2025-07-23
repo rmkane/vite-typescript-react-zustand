@@ -1,8 +1,7 @@
-import { useDecrement, useIncrement } from '@hooks'
+import { useActions } from '@store/counterStore'
 
 export default function CounterControls() {
-  const decrement = useDecrement()
-  const increment = useIncrement()
+  const { increment, decrement } = useActions()
 
   return (
     <div>
