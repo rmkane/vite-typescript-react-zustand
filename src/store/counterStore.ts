@@ -23,3 +23,5 @@ export const useCount = () => useCounterStore((state) => state.count)
 
 // Should be a referencial, so it's not re-created on every render
 export const useActions = () => useCounterStore((state) => state.actions)
+
+export { useCounterStore }
