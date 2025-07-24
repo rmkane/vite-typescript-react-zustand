@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 
 import clsx from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
 import type { NestedRecord } from '@/types/nested-record'
 
@@ -66,7 +67,7 @@ export default function Button({
     <button
       type="button"
       onClick={onClick}
-      className={clsx(baseStyles, variantStyle, sizeStyle, className)}
+      className={twMerge(clsx(baseStyles, variantStyle, sizeStyle, className))}
     >
       {children}
     </button>
