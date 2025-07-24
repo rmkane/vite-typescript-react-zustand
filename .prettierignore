@@ -1,0 +1,13 @@
+# Ignore files that cause parsing errors with import sorting
+TESTING.md
+README.md
+*.md
+
+# Ignore build artifacts
+dist/
+node_modules/
+pnpm-lock.yaml
+
+# Ignore config files that don't need formatting
+*.config.js
+*.config.ts

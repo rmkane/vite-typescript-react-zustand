@@ -1,11 +1,10 @@
-import { globalIgnores } from 'eslint/config'
-
-import globals from 'globals'
-
 import js from '@eslint/js'
+import prettier from 'eslint-config-prettier'
+import importPlugin from 'eslint-plugin-import'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
-import importPlugin from 'eslint-plugin-import'
+import { globalIgnores } from 'eslint/config'
+import globals from 'globals'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config([
@@ -17,32 +16,19 @@ export default tseslint.config([
       tseslint.configs.recommended,
       reactHooks.configs['recommended-latest'],
       reactRefresh.configs.vite,
+      prettier,
     ],
     plugins: {
       import: importPlugin,
     },
-    rules: {
-      // Import sorting
-      'import/order': [
-        'error',
-        {
-          groups: [
-            'builtin',
-            'external',
-            'internal',
-            'parent',
-            'sibling',
-            'index',
-            'object',
-            'type',
-          ],
-          'newlines-between': 'always',
-          alphabetize: {
-            order: 'asc',
-            caseInsensitive: true,
-          },
+    settings: {
+      'import/resolver': {
+        typescript: {
+          alwaysTryTypes: true,
         },
-      ],
+      },
+    },
+    rules: {
       'import/no-unresolved': 'off', // TypeScript handles this
       'import/named': 'off', // TypeScript handles this
     },

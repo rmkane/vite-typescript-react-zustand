@@ -1,4 +1,4 @@
-import { useCount } from '@store/counterStore'
+import { useCount } from '@/store/counterStore'
 
 export default function CounterDisplay() {
   const count = useCount()

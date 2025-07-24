@@ -1,22 +1,59 @@
-import { useActions } from '@store/counterStore'
+import Button from '@/components/Button'
+import { useActions } from '@/store/counterStore'
 
 export default function CounterControls() {
-  const { increment, decrement } = useActions()
+  const {
+    decrement,
+    decrementAsync,
+    decrementDebounced,
+    decrementThrottled,
+    increment,
+    incrementAsync,
+    incrementDebounced,
+    incrementThrottled,
+  } = useActions()
 
   return (
-    <div className="flex justify-center gap-4">
-      <button
-        onClick={decrement}
-        className="mr-4 transform rounded-lg bg-red-500 px-6 py-3 font-semibold text-white shadow-md transition-all duration-200 hover:scale-105 hover:bg-red-600 hover:shadow-lg active:scale-95"
-      >
-        -1
-      </button>
-      <button
-        onClick={increment}
-        className="transform rounded-lg bg-green-500 px-6 py-3 font-semibold text-white shadow-md transition-all duration-200 hover:scale-105 hover:bg-green-600 hover:shadow-lg active:scale-95"
-      >
-        +1
-      </button>
+    <div className="flex flex-col items-center justify-center gap-4">
+      {/* Basic actions */}
+      <div className="flex items-center justify-center gap-4">
+        <Button onClick={decrement} variant="decrement">
+          -1
+        </Button>
+        <Button onClick={increment} variant="increment">
+          +1
+        </Button>
+      </div>
+
+      {/* Async actions */}
+      <div className="flex items-center justify-center gap-4">
+        <Button onClick={decrementAsync} variant="decrement">
+          -1 Async
+        </Button>
+        <Button onClick={incrementAsync} variant="increment">
+          +1 Async
+        </Button>
+      </div>
+
+      {/* Debounced actions */}
+      <div className="flex items-center justify-center gap-4">
+        <Button onClick={decrementDebounced} variant="decrement">
+          -1 Debounced
+        </Button>
+        <Button onClick={incrementDebounced} variant="increment">
+          +1 Debounced
+        </Button>
+      </div>
+
+      {/* Throttled actions */}
+      <div className="flex items-center justify-center gap-4">
+        <Button onClick={decrementThrottled} variant="decrement">
+          -1 Throttled
+        </Button>
+        <Button onClick={incrementThrottled} variant="increment">
+          +1 Throttled
+        </Button>
+      </div>
     </div>
   )
 }

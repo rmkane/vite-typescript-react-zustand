@@ -34,8 +34,9 @@ pnpm test:coverage
 Create test files with `.test.ts` extension for testing store logic:
 
 ```typescript
-import { describe, it, expect, beforeEach } from 'vitest'
-import { useCounterStore } from './counterStore'
+import { beforeEach, describe, expect, it } from 'vitest'
+
+import { useCounterStore } from '@store/counterStore'
 
 describe('counterStore', () => {
   beforeEach(() => {
@@ -60,7 +61,8 @@ Create test files with `.test.tsx` extension for testing hooks in React componen
 
 ```typescript
 import { render, screen, fireEvent } from '@testing-library/react'
-import { useCount, useActions } from './counterStore'
+
+import { useCount, useActions } from '@store/counterStore'
 
 const TestComponent = () => {
   const count = useCount()

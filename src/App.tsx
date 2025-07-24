@@ -1,5 +1,5 @@
-import reactLogo from '@assets/react.svg'
-import Counter from '@components/Counter'
+import reactLogo from '@/assets/react.svg'
+import Counter from '@/components/Counter'
 
 import viteLogo from '/vite.svg'
 

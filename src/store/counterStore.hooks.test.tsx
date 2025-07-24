@@ -1,7 +1,7 @@
-import { render, screen, fireEvent } from '@testing-library/react'
-import { describe, it, expect, beforeEach } from 'vitest'
+import { fireEvent, render, screen } from '@testing-library/react'
+import { beforeEach, describe, expect, it } from 'vitest'
 
-import { useCounterStore, useCount, useActions } from './counterStore'
+import { useActions, useCount, useCounterStore } from '@/store/counterStore'
 
 // Test component that uses the hooks
 const TestCounter = () => {
