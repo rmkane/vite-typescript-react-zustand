@@ -1,5 +1,5 @@
 import { useActions } from '@/store/counterStore'
-import Button from '@/components/CounterButton'
+import CounterButton from '@/components/CounterButton'
 
 export default function CounterControls() {
   const {
@@ -16,49 +16,57 @@ export default function CounterControls() {
   return (
     <div className="grid grid-cols-2 gap-4">
       {/* Basic actions */}
-      <Button onClick={decrement} variant="decrement">
+      <CounterButton onClick={decrement} variant="decrement">
         -1
-      </Button>
-      <Button onClick={increment} variant="increment">
+      </CounterButton>
+      <CounterButton onClick={increment} variant="increment">
         +1
-      </Button>
+      </CounterButton>
       {/* Async actions */}
-      <Button onClick={decrementAsync} variant="decrement" subvariant="async">
+      <CounterButton
+        onClick={decrementAsync}
+        variant="decrement"
+        subvariant="async"
+      >
         -1 Async
-      </Button>
-      <Button onClick={incrementAsync} variant="increment" subvariant="async">
+      </CounterButton>
+      <CounterButton
+        onClick={incrementAsync}
+        variant="increment"
+        subvariant="async"
+      >
         +1 Async
-      </Button>
+      </CounterButton>
       {/* Debounced actions */}
-      <Button
+      <CounterButton
         onClick={decrementDebounced}
         variant="decrement"
         subvariant="debounced"
       >
         -1 Debounced
-      </Button>
-      <Button
+      </CounterButton>
+      <CounterButton
         onClick={incrementDebounced}
         variant="increment"
         subvariant="debounced"
       >
         +1 Debounced
-      </Button>
+      </CounterButton>
       {/* Throttled actions */}
-      <Button
+      <CounterButton
         onClick={decrementThrottled}
         variant="decrement"
         subvariant="throttled"
       >
         -1 Throttled
-      </Button>
-      <Button
+      </CounterButton>
+      <CounterButton
         onClick={incrementThrottled}
         variant="increment"
         subvariant="throttled"
       >
         +1 Throttled
-      </Button>
+      </CounterButton>
     </div>
   )
 }
