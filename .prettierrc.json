@@ -10,14 +10,18 @@
   ],
   "importOrder": [
     "<BUILTIN_MODULES>",
+    "",
+    "react",
+    "",
     "<THIRD_PARTY_MODULES>",
     "",
+    "^@/types/",
+    "^@/utils/",
+    "^@/store/",
+    "^@/hooks/",
+    "^@/contexts/",
     "^@/assets/",
     "^@/components/",
-    "^@/contexts/",
-    "^@/hooks/",
-    "^@/store/",
-    "^@/utils/",
     "",
     "^[./]"
   ]

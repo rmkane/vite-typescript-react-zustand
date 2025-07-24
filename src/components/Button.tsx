@@ -1,14 +1,22 @@
 import type { ReactNode } from 'react'
 
-interface ButtonProps {
-  children: ReactNode
+import clsx from 'clsx'
+
+import type { NestedRecord } from '@/types/nested-record'
+
+type Variant = 'increment' | 'decrement'
+type Subvariant = 'basic' | 'async' | 'debounced' | 'throttled'
+
+export interface ButtonProps {
   onClick: () => void
-  variant: 'increment' | 'decrement'
+  variant: Variant
+  subvariant?: Subvariant
   size?: 'sm' | 'md' | 'lg'
   className?: string
+  children: ReactNode
 }
 
-const variantStyles = {
+const variantStyles: NestedRecord<Variant, Subvariant, string> = {
   increment: {
     basic: 'bg-blue-500 hover:bg-blue-600',
     async: 'bg-green-500 hover:bg-green-600',
@@ -29,37 +37,36 @@ const sizeStyles = {
   lg: 'px-8 py-4 text-lg',
 }
 
-function getStyleVariant(
-  buttonText: string,
-): keyof typeof variantStyles.increment {
-  const text = buttonText.toLowerCase()
-
-  if (text.includes('async')) return 'async'
-  if (text.includes('debounced')) return 'debounced'
-  if (text.includes('throttled')) return 'throttled'
-
-  return 'basic'
-}
+const baseStyles = [
+  'transform',
+  'rounded-lg',
+  'font-semibold',
+  'text-white',
+  'shadow-md',
+  'transition-all',
+  'duration-200',
+  'cursor-pointer',
+  'hover:scale-105',
+  'hover:shadow-lg',
+  'active:scale-95',
+]
 
 export default function Button({
-  children,
   onClick,
   variant,
+  subvariant = 'basic',
   size = 'md',
   className = '',
+  children,
 }: ButtonProps) {
-  const buttonText = children?.toString() || ''
-  const styleVariant = getStyleVariant(buttonText)
-
-  const baseStyles =
-    'transform rounded-lg font-semibold text-white shadow-md transition-all duration-200 hover:scale-105 hover:shadow-lg active:scale-95'
-  const variantStyle = variantStyles[variant][styleVariant]
+  const variantStyle = variantStyles[variant][subvariant]
   const sizeStyle = sizeStyles[size]
 
   return (
     <button
+      type="button"
       onClick={onClick}
-      className={`${baseStyles} ${variantStyle} ${sizeStyle} ${className}`}
+      className={clsx(baseStyles, variantStyle, sizeStyle, className)}
     >
       {children}
     </button>

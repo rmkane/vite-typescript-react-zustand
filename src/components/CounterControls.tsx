@@ -1,5 +1,5 @@
-import Button from '@/components/Button'
 import { useActions } from '@/store/counterStore'
+import Button from '@/components/Button'
 
 export default function CounterControls() {
   const {
@@ -14,46 +14,51 @@ export default function CounterControls() {
   } = useActions()
 
   return (
-    <div className="flex flex-col items-center justify-center gap-4">
+    <div className="grid grid-cols-2 gap-4">
       {/* Basic actions */}
-      <div className="flex items-center justify-center gap-4">
-        <Button onClick={decrement} variant="decrement">
-          -1
-        </Button>
-        <Button onClick={increment} variant="increment">
-          +1
-        </Button>
-      </div>
-
+      <Button onClick={decrement} variant="decrement">
+        -1
+      </Button>
+      <Button onClick={increment} variant="increment">
+        +1
+      </Button>
       {/* Async actions */}
-      <div className="flex items-center justify-center gap-4">
-        <Button onClick={decrementAsync} variant="decrement">
-          -1 Async
-        </Button>
-        <Button onClick={incrementAsync} variant="increment">
-          +1 Async
-        </Button>
-      </div>
-
+      <Button onClick={decrementAsync} variant="decrement" subvariant="async">
+        -1 Async
+      </Button>
+      <Button onClick={incrementAsync} variant="increment" subvariant="async">
+        +1 Async
+      </Button>
       {/* Debounced actions */}
-      <div className="flex items-center justify-center gap-4">
-        <Button onClick={decrementDebounced} variant="decrement">
-          -1 Debounced
-        </Button>
-        <Button onClick={incrementDebounced} variant="increment">
-          +1 Debounced
-        </Button>
-      </div>
-
+      <Button
+        onClick={decrementDebounced}
+        variant="decrement"
+        subvariant="debounced"
+      >
+        -1 Debounced
+      </Button>
+      <Button
+        onClick={incrementDebounced}
+        variant="increment"
+        subvariant="debounced"
+      >
+        +1 Debounced
+      </Button>
       {/* Throttled actions */}
-      <div className="flex items-center justify-center gap-4">
-        <Button onClick={decrementThrottled} variant="decrement">
-          -1 Throttled
-        </Button>
-        <Button onClick={incrementThrottled} variant="increment">
-          +1 Throttled
-        </Button>
-      </div>
+      <Button
+        onClick={decrementThrottled}
+        variant="decrement"
+        subvariant="throttled"
+      >
+        -1 Throttled
+      </Button>
+      <Button
+        onClick={incrementThrottled}
+        variant="increment"
+        subvariant="throttled"
+      >
+        +1 Throttled
+      </Button>
     </div>
   )
 }

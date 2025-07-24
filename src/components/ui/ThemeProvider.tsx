@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
-import { ThemeContext, type Theme } from '@/contexts/ThemeContext'
 import { useLocalStorage } from '@/hooks/useLocalStorage'
+import { ThemeContext, type Theme } from '@/contexts/ThemeContext'
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useLocalStorage<Theme>('theme', 'system')
