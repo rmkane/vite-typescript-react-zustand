@@ -3,7 +3,7 @@ import CounterDisplay from '@components/CounterDisplay'
 
 export default function Counter() {
   return (
-    <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
+    <div className="rounded-xl bg-gray-50 p-6 dark:bg-gray-700">
       <CounterDisplay />
       <CounterControls />
     </div>

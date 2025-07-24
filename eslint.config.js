@@ -1,9 +1,12 @@
-import js from '@eslint/js'
+import { globalIgnores } from 'eslint/config'
+
 import globals from 'globals'
+
+import js from '@eslint/js'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
+import importPlugin from 'eslint-plugin-import'
 import tseslint from 'typescript-eslint'
-import { globalIgnores } from 'eslint/config'
 
 export default tseslint.config([
   globalIgnores(['dist']),
@@ -15,6 +18,34 @@ export default tseslint.config([
       reactHooks.configs['recommended-latest'],
       reactRefresh.configs.vite,
     ],
+    plugins: {
+      import: importPlugin,
+    },
+    rules: {
+      // Import sorting
+      'import/order': [
+        'error',
+        {
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+            'object',
+            'type',
+          ],
+          'newlines-between': 'always',
+          alphabetize: {
+            order: 'asc',
+            caseInsensitive: true,
+          },
+        },
+      ],
+      'import/no-unresolved': 'off', // TypeScript handles this
+      'import/named': 'off', // TypeScript handles this
+    },
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
