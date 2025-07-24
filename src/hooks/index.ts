@@ -1,2 +1,2 @@
-/* Placeholder for hooks */
-export default {}
+export { useTheme } from './useTheme'
+export { useLocalStorage } from './useLocalStorage'

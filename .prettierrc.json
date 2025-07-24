@@ -14,6 +14,7 @@
     "",
     "^@/assets/",
     "^@/components/",
+    "^@/contexts/",
     "^@/hooks/",
     "^@/store/",
     "^@/utils/",
