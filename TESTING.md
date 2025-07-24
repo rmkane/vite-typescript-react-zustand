@@ -40,7 +40,10 @@ import { useCounterStore } from './counterStore'
 describe('counterStore', () => {
   beforeEach(() => {
     // Reset store state before each test
-    useCounterStore.setState({ count: 0, actions: useCounterStore.getState().actions })
+    useCounterStore.setState({
+      count: 0,
+      actions: useCounterStore.getState().actions,
+    })
   })
 
   it('should increment count', () => {
@@ -86,7 +89,10 @@ Always reset the store state in `beforeEach` to ensure test isolation:
 
 ```typescript
 beforeEach(() => {
-  useCounterStore.setState({ count: 0, actions: useCounterStore.getState().actions })
+  useCounterStore.setState({
+    count: 0,
+    actions: useCounterStore.getState().actions,
+  })
 })
 ```
 
@@ -112,7 +118,10 @@ Verify that your custom hooks return the expected values:
 
 ```typescript
 it('should return current count', () => {
-  useCounterStore.setState({ count: 5, actions: useCounterStore.getState().actions })
+  useCounterStore.setState({
+    count: 5,
+    actions: useCounterStore.getState().actions,
+  })
   const count = useCounterStore.getState().count
   expect(count).toBe(5)
 })

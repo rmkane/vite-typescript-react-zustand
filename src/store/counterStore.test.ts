@@ -4,7 +4,10 @@ import { useCounterStore } from './counterStore'
 describe('counterStore', () => {
   beforeEach(() => {
     // Reset the store to initial state before each test
-    useCounterStore.setState({ count: 0, actions: useCounterStore.getState().actions })
+    useCounterStore.setState({
+      count: 0,
+      actions: useCounterStore.getState().actions,
+    })
   })
 
   describe('initial state', () => {
@@ -78,7 +81,10 @@ describe('counterStore', () => {
   describe('hooks', () => {
     it('should return current count from useCount hook', () => {
       // Set up some state
-      useCounterStore.setState({ count: 5, actions: useCounterStore.getState().actions })
+      useCounterStore.setState({
+        count: 5,
+        actions: useCounterStore.getState().actions,
+      })
 
       // In a real component, this would be called in a React component
       // For testing, we can simulate by checking the selector logic
